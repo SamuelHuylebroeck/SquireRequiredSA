@@ -18,5 +18,10 @@ namespace Assets.Model.Ship
         {
             this.AmmoCapacity = toCopy.AmmoCapacity;
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace Assets.Model.Ship{
         public int CurrentHeat { get; set; }
         public int MaxPower { get; private set; }
         public int CurrentPower { get; private set; }
+        public int MaxAmmo { get; private set; }
+        public int CurrentAmmo { get; private set; }
 
         public int MaxSpeed { get; private set; }
         public int CurrentSpeed { get; private set; }
@@ -18,49 +20,38 @@ namespace Assets.Model.Ship{
         public int MaxTurningSpeed { get; private set; }
         public int CurrentTurningSpeed { get; private set; }
 
-        public ShipCore(List<ShipComponent> components)
+        public ShipCore(int maxHull,int maxPower, int maxHeat, int maxAmmo, int maxSpeed, int maxTurningSpeed, List<ShipComponent> components)
         {
 
+            this.MaxHull = maxHull;
+            this.CurrentHull = maxHull;
+            this.MaxHeat = maxHeat;
+            this.CurrentHeat = 0;
+            this.MaxPower = maxPower;
+            this.CurrentPower = maxPower;
+            this.MaxAmmo = maxAmmo;
+            this.CurrentAmmo = maxAmmo;
+            this.MaxSpeed = maxSpeed;
+            this.CurrentSpeed = 0;
+            this.MaxTurningSpeed = maxTurningSpeed;
+            this.MaxTurningSpeed = 0;
             this.Components = components;
-            InitializeStats();
         }
 
-        public ShipCore(ShipCore toCopy):this(toCopy.Components)
+        public ShipCore(ShipCore toCopy):this(toCopy.MaxHull,toCopy.MaxPower, toCopy.MaxHeat, toCopy.MaxAmmo,  toCopy.MaxSpeed, toCopy.MaxTurningSpeed,toCopy.Components)
         {
            
         }
 
-        private bool initialized = false;
-
-        private void InitializeStats()
+        public override string ToString()
         {
-            UpdateStats();
-            initialized = true;
-        }
-
-        private void UpdateStats()
-        {
-            this.MaxHull = 0;
-            this.MaxPower = 0;
-            this.MaxHeat = 0;
-            this.MaxSpeed = 0;
-            this.MaxTurningSpeed = 0;
-            foreach (ShipComponent comp in Components){
-                //Hull update
-                MaxHull += comp.MaxHull;
-                //Other stats update
-                AddStats(comp);
-                
-            }
-        }
-
-        private void AddStats(ShipComponent comp)
-        {
-            switch (comp.type)
+            string shipAsString = string.Format("Ship, MHu:{0}, MP:{1}, MHe:{2}, MA:{3}, MS: {4}, MAS: {5}\n", MaxHull, MaxPower, MaxHeat,MaxAmmo,MaxSpeed,MaxTurningSpeed);
+            shipAsString += "Componenents:\n";
+            foreach(ShipComponent comp in this.Components)
             {
-                default:
-                    break;
+                shipAsString += comp + "\n";
             }
+            return shipAsString;
         }
 
     }

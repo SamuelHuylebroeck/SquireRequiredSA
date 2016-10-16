@@ -28,5 +28,10 @@ namespace Assets.Model.Ship
             this.CurrentHull = toCopy.CurrentHull;
         }
 
+        public override string ToString()
+        {
+            return "Type: " + type;
+        }
+
     }
 }
