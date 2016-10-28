@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Controller.ShipControllers;
+using Assets.Gameplay.Controller.ShipControllers;
 using Assets.Controller.Factories;
-using Assets.Controller.PlayerControllers;
+using Assets.Gameplay.Controller.PlayerControllers;
 
 
-namespace Assets.Controller.SceneControllers
+namespace Assets.Gameplay.Controller.SceneControllers
 {
     public class SandBoxController : MonoBehaviour
     {
 
-        public SandboxPlayerController pc { get; set; }
-        public BasicShipController testShip { get; private set; }
+        public SandboxPlayerController PC;
+        public BasicShipController testShip;
         public Sprite shipSprite;
+
 
         // Use this for initialization
         void Start()
@@ -29,13 +30,21 @@ namespace Assets.Controller.SceneControllers
         private void initBasicShip()
         {
             BasicShipFactory fac = new BasicShipFactory();
-            this.testShip = new BasicShipController(fac.CreateShip());
+            this.testShip = Instantiate(testShip);
+            this.testShip.Init(fac.CreateShip());
             Debug.Log("Created: \n" + testShip.ship);
             Debug.Log("Adding sprite");
             testShip.SetSprite(shipSprite);
-            if(pc != null)
+            Debug.Log("Linking to controller");
+            if(PC != null)
             {
-                pc.testShip = testShip;
+                Debug.Log("Assigning ship to controller");
+                PC.testShip = testShip;
+            }
+            else
+            {
+                Debug.Log("Link failed");
+                Debug.Log(PC);
             }
 
         }

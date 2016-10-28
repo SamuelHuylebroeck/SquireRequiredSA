@@ -40,7 +40,7 @@ namespace Assets.Model.Ship{
             this.MaxSpeed = maxSpeed;
             this.CurrentSpeed = 0;
             this.MaxTurningSpeed = maxTurningSpeed;
-            this.MaxTurningSpeed = 0;
+            this.CurrentTurningSpeed = 0;
 			this.MaxAcceleration = maxAcceleration;
 			this.CurrentAcceleration = 0;
 			this.MaxTurningAcceleration = maxTurningAcceleration;

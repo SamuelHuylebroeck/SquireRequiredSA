@@ -12,16 +12,16 @@ namespace Assets.Controller.Factories
         {
             List<ShipComponent> components = new List<ShipComponent>();
             //Generator
-            ShipGenerator gen = new ShipGenerator(10, 10, 1);
+            ShipGenerator gen = new ShipGenerator(100, 100, 10);
             components.Add(gen);
             //Heatsink
-            ShipHeatSink sink = new ShipHeatSink(10, 20, 2);
+            ShipHeatSink sink = new ShipHeatSink(100, 200, 20);
             components.Add(sink);
             //Main Thruster
-            ShipMainThruster thrust = new ShipMainThruster(10, 10, 1, 1, 1);
+            ShipMainThruster thrust = new ShipMainThruster(100, 100, 10, 1, 1);
             components.Add(thrust);
             //Maneuver Thruster
-            ShipManeuverThrusters mThrust = new ShipManeuverThrusters(10, 5, 1, 1, 1);
+            ShipManeuverThrusters mThrust = new ShipManeuverThrusters(100, 50, 10, 1, 1);
             components.Add(mThrust);
             //Build ship
             return Build(components);

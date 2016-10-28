@@ -15,19 +15,20 @@ namespace Assets.Configuration
         }
 
         void OnEnable() {
-            buttonKeys = new Dictionary<string, KeyCode>();
 
-            //TODO: read from preference file
-            buttonKeys["Forward"] = KeyCode.UpArrow;
-            buttonKeys["Backwards"] = KeyCode.DownArrow;
-            buttonKeys["Left"] = KeyCode.LeftArrow;
-            buttonKeys["Right"] = KeyCode.RightArrow;
-            buttonKeys["Stop"] = KeyCode.Space;
         }
         //Initialise
         void Start()
         {
+            buttonKeys = new Dictionary<string, KeyCode>();
 
+            //TODO: read from preference file
+            buttonKeys["Forward"] = KeyCode.Z;
+            buttonKeys["Backward"] = KeyCode.S;
+            buttonKeys["Left"] = KeyCode.Q;
+            buttonKeys["Right"] = KeyCode.D;
+            buttonKeys["Stop"] = KeyCode.Space;
+            buttonKeys["Dump"] = KeyCode.KeypadEnter;
         }
 
         void Update()
